@@ -3,8 +3,10 @@ import {SafeAreaView, Text, ScrollView, Button, View} from 'react-native';
 //import MyText from './components/MyText/MyText';
 import {ThemeContext} from './contexts/ThemeContext';
 import HomeScreen from './components/HomeScreen/HomeScreen';
+import useToggle from './customHooks/useToggle';
 
 const App = () => {
+  const [isOn, toggleIsOn] = useToggle(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
   /*const [text, setText] = useState(0);
 
@@ -22,11 +24,11 @@ const App = () => {
   const handleClick = () => {
     scrollViewRef.current.scrollTo({x: 0, y: 0, animated: true});
   };
-  */
 
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
   };
+  */
 
   return (
     <ThemeContext.Provider value={isDarkMode}>
@@ -38,12 +40,14 @@ const App = () => {
           <Text key={index}>Hello world! {index}</Text>
         ))}
       </ScrollView>
-      <Button onPress={handleClick} title="Scroll to top" />*/}
+      <Button onPress={handleClick} title="Scroll to top" />
         <View style={{backgroundColor: isDarkMode ? '#222222' : '#ffffff'}}>
           <Text>Hello world!</Text>
           <Button title="Switch Mode" onPress={toggleTheme} />
         </View>
-        <HomeScreen />
+        <HomeScreen />*/}
+        <Text>{isOn ? 'ON' : 'OFF'}</Text>
+        <Button title="Toggle" onPress={toggleIsOn} />
       </SafeAreaView>
     </ThemeContext.Provider>
   );
