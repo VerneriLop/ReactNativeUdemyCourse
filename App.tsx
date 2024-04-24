@@ -64,6 +64,37 @@ class App extends Component {
     this.state = {};
   }
 
+  componentDidMount(): void {
+    console.log('Component is mounted');
+  }
+
+  shouldComponentUpdate(
+    nextProps: Readonly<{}>,
+    nextState: Readonly<{}>,
+    nextContext: any,
+  ): boolean {
+    console.log('Checking if component should update');
+    return true;
+  }
+
+  getSnapshotBeforeUpdate(prevProps: Readonly<{}>, prevState: Readonly<{}>) {
+    console.log('Getting snapshot before component updates');
+    return null;
+  }
+
+  componentDidUpdate(
+    prevProps: Readonly<{}>,
+    prevState: Readonly<{}>,
+    snapshot?: any,
+  ): void {
+    console.log('component has updated');
+  }
+
+  //this might need navigation or something like that so component would unmount
+  componentWillUnmount(): void {
+    console.log('component will unmount');
+  }
+
   render() {
     return (
       <SafeAreaView>
