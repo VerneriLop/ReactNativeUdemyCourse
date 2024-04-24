@@ -57,6 +57,7 @@ export default App;
 
 import React, {Component} from 'react';
 import {SafeAreaView, Text} from 'react-native';
+import MyText from './components/MyText/MyText';
 
 class App extends Component {
   constructor(props) {
@@ -104,6 +105,7 @@ class App extends Component {
           }}>
           Hello, {this.state?.name}
         </Text>
+        <MyText name={'Verneri'} />
       </SafeAreaView>
     );
   }
