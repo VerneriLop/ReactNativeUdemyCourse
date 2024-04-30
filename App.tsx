@@ -1,5 +1,13 @@
 import React, {useState} from 'react';
-import {Image, SafeAreaView, ScrollView, TextInput} from 'react-native';
+import {
+  Button,
+  Image,
+  Pressable,
+  SafeAreaView,
+  ScrollView,
+  Text,
+  TextInput,
+} from 'react-native';
 
 const App = () => {
   const [textValue, setTextValue] = useState('');
@@ -8,6 +16,40 @@ const App = () => {
 
   return (
     <SafeAreaView>
+      <ScrollView>
+        <TextInput
+          style={{borderWidth: 1, borderRadius: 4, padding: 10}}
+          placeholder="Enter your email"
+          keyboardType="email-address"
+          value={email}
+          onChangeText={value => {
+            setEmail(value);
+          }}
+        />
+        <TextInput
+          style={{borderWidth: 1, borderRadius: 4, padding: 10}}
+          placeholder="Enter your password"
+          secureTextEntry
+          value={passwordValue}
+          onChangeText={value => {
+            setPasswordValue(value);
+          }}
+        />
+        <Pressable
+          disabled={email.length === 0 || passwordValue.length < 8}
+          style={[
+            {backgroundColor: 'black'},
+            (email.length === 0 || passwordValue.length < 8) && {opacity: 0.5},
+          ]}
+          onPress={() => {
+            console.log(email, passwordValue);
+            console.log('clicked');
+          }}>
+          <Text style={{color: 'white', textAlign: 'center', padding: 10}}>
+            Submit
+          </Text>
+        </Pressable>
+      </ScrollView>
       <ScrollView
         onScroll={() => {
           console.log('we are scrolling');
