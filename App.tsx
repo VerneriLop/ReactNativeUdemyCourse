@@ -1,4 +1,75 @@
 import React, {useState} from 'react';
+import {Image, SafeAreaView, ScrollView, TextInput} from 'react-native';
+
+const App = () => {
+  const [textValue, setTextValue] = useState('');
+  const [email, setEmail] = useState('');
+  const [passwordValue, setPasswordValue] = useState('');
+
+  return (
+    <SafeAreaView>
+      <ScrollView
+        onScroll={() => {
+          console.log('we are scrolling');
+        }}
+        contentContainerStyle={{backgroundColor: 'red', height: 600}}
+        showsVerticalScrollIndicator={false}
+        horizontal={true}
+        showsHorizontalScrollIndicator={false}>
+        <Image
+          source={require('./assets/images/cake.png')}
+          style={{height: 500, width: 500}}
+        />
+        <Image
+          source={require('./assets/images/cake.png')}
+          style={{height: 500, width: 500}}
+        />
+        <Image
+          source={require('./assets/images/cake.png')}
+          style={{height: 500, width: 500}}
+        />
+      </ScrollView>
+      <TextInput
+        style={{borderWidth: 1, padding: 10, borderRadius: 4}}
+        value={textValue}
+        onChangeText={value => {
+          console.log(value);
+          setTextValue(value);
+        }}
+        placeholder="Please enter your name"
+        autoFocus={true}
+      />
+      <TextInput
+        style={{borderWidth: 1, padding: 10, borderRadius: 4}}
+        value={email}
+        onChangeText={value => {
+          setEmail(value);
+        }}
+        placeholder="Please enter your email here"
+        autoFocus={true}
+        keyboardType="email-address"
+        returnKeyType="next" //done,go,search
+      />
+      <TextInput
+        style={{borderWidth: 1, padding: 10, borderRadius: 4}}
+        value={passwordValue}
+        onChangeText={value => {
+          console.log(value);
+          setPasswordValue(value);
+        }}
+        keyboardType="phone-pad" //default,numeric
+        secureTextEntry={true}
+        placeholder="Please enter your password"
+        autoFocus={true}
+      />
+    </SafeAreaView>
+  );
+};
+
+export default App;
+
+/*
+import React, {useState} from 'react';
 import {SafeAreaView, Image} from 'react-native';
 
 const App = () => {
@@ -26,6 +97,9 @@ const App = () => {
 };
 
 export default App;
+*/
+
+//---------------------
 
 /*
 
