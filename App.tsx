@@ -1,18 +1,22 @@
 import React, {useState} from 'react';
 import {
-  Button,
   Image,
   Pressable,
   SafeAreaView,
   ScrollView,
+  Switch,
   Text,
   TextInput,
+  View,
 } from 'react-native';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {faCheck} from '@fortawesome/free-solid-svg-icons';
 
 const App = () => {
   const [textValue, setTextValue] = useState('');
   const [email, setEmail] = useState('');
   const [passwordValue, setPasswordValue] = useState('');
+  const [shouldKeepLoggedIn, setShouldKeepLoggedIn] = useState(true);
 
   return (
     <SafeAreaView>
@@ -35,6 +39,13 @@ const App = () => {
             setPasswordValue(value);
           }}
         />
+        <View style={{flex: 1, flexDirection: 'row', alignItems: 'center'}}>
+          <Switch
+            value={shouldKeepLoggedIn}
+            onValueChange={value => setShouldKeepLoggedIn(value)}
+          />
+          <Text>Keep me logged in</Text>
+        </View>
         <Pressable
           disabled={email.length === 0 || passwordValue.length < 8}
           style={[
@@ -42,12 +53,21 @@ const App = () => {
             (email.length === 0 || passwordValue.length < 8) && {opacity: 0.5},
           ]}
           onPress={() => {
-            console.log(email, passwordValue);
+            console.log(email, passwordValue, shouldKeepLoggedIn);
             console.log('clicked');
           }}>
-          <Text style={{color: 'white', textAlign: 'center', padding: 10}}>
-            Submit
-          </Text>
+          <View
+            style={{
+              flex: 1,
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+            <Text style={{color: 'white', textAlign: 'center', padding: 10}}>
+              Submit
+            </Text>
+            <FontAwesomeIcon icon={faCheck} style={{color: 'white'}} />
+          </View>
         </Pressable>
       </ScrollView>
       <ScrollView
