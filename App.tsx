@@ -1,3 +1,27 @@
+import React from 'react';
+import {View} from 'react-native';
+
+const App = () => {
+  return (
+    <View
+      style={{
+        flex: 1,
+        justifyContent: 'space-evenly',
+        flexDirection: 'row',
+        alignItems: 'center',
+      }}>
+      <View style={{backgroundColor: 'yellow', width: 50, height: 200}} />
+      <View style={{backgroundColor: 'green', width: 50, height: 200}} />
+      <View style={{backgroundColor: 'black', width: 50, height: 200}} />
+    </View>
+  );
+};
+
+export default App;
+
+/*
+BASIC COMPONENTS
+
 import React, {useState} from 'react';
 import {
   Image,
@@ -130,7 +154,11 @@ const App = () => {
 
 export default App;
 
+*/
+
 /*
+IMAGES
+
 import React, {useState} from 'react';
 import {SafeAreaView, Image} from 'react-native';
 
